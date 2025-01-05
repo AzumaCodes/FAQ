@@ -1,20 +1,22 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const faqContents = document.querySelectorAll(".faq-content");
+const accordionBtns = document.querySelectorAll(".accordion-btn");
 
-  faqContents.forEach((faq) => {
-    const question = faq.querySelector(".faq-question");
-    const answer = faq.querySelector(".faq-answer");
-    const icon = faq.querySelector(".image");
+accordionBtns.forEach((btn) => {
+  btn.addEventListener("click", function () {
+    const expanded = this.getAttribute("aria-expanded") === "true";
+    const content = document.getElementById(this.getAttribute("aria-controls"));
 
-    question.addEventListener("click", () => {
-      faq.classList.toggle("active");
+    // Toggle current accordion
+    this.setAttribute("aria-expanded", !expanded);
+    content.hidden = expanded;
 
-      if (faq.classList.contains("active")) {
-        answer.style.display = "block";
-        icon.src = "./assets/images/icon-minus.svg";
-      } else {
-        answer.style.display = "none";
-        icon.src = "./assets/images/icon-plus.svg";
+    // Optionally collapse other accordions
+    accordionBtns.forEach((otherBtn) => {
+      if (otherBtn !== btn) {
+        otherBtn.setAttribute("aria-expanded", "false");
+        const otherContent = document.getElementById(
+          otherBtn.getAttribute("aria-controls")
+        );
+        otherContent.hidden = true;
       }
     });
   });
