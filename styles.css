@@ -120,4 +120,9 @@ button:hover {
   .container {
     max-width: 375px;
   }
+
+  .attribution {
+    margin-top: 10px;
+    font-size: 14px;
+  }
 }
