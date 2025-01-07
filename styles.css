@@ -119,6 +119,7 @@ button:hover {
 
   .container {
     max-width: 375px;
+    margin-top: 250px;
   }
 
   .attribution {
