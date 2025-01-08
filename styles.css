@@ -110,7 +110,7 @@ button:hover {
   display: block; /* Show the minus icon when 'show' is active */
 }
 
-@media (max-width: 460px) {
+@media screen and (max-width: 460px) {
   body {
     background-image: url("assets/images/background-pattern-mobile.svg");
     background-size: contain;
